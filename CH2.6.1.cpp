@@ -5,11 +5,11 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-16, 11:16:27 pm
+ * Last Modified: 2022-05-17, 1:14:05 am
  * Modified By: Hamzenis Kryeziu
  * -----
- * Copyright (c) 2022 
- * 
+ * Copyright (c) 2022
+ *
  * Free for use
  * -----
  * HISTORY:
@@ -22,6 +22,30 @@
 
 using namespace std;
 
+void printTable(float l, int r, int s, float b, int h, int g) {
+    cout << l
+        << endl
+        << r
+        << endl
+        << s
+        << endl
+        << b
+        << endl
+        << h
+        << endl
+        << g
+        << endl;
+}
+/*
+*   CSI[2J clears screen, CSI[H moves the cursor to top-left corner
+*   -
+*   Source: Stackoverflow
+*/
+void clear() {
+    std::cout << "\x1B[2J\x1B[H";
+}
+
+
 int main() {
 
     float listeneinkaufspreis;
@@ -30,8 +54,6 @@ int main() {
     float bezugskosten;
     int handlungskostensatz;
     int gewinnzuschlag;
-
-
 
     cout << "Bitte Geben Sie die Werte ein" << endl << endl << "Eingabe" << endl;
     cout << "Listeneinkaufspreis: ";
@@ -52,5 +74,20 @@ int main() {
     cout << "Gewinnzuschlag (in %): ";
     cin >> gewinnzuschlag;
 
+
+    cout << "Hit Enter." << endl;
+    std::cin.ignore();
+    std::cin.ignore();
+    clear();
+    printTable(
+        listeneinkaufspreis,
+        rabatt,
+        skonto,
+        bezugskosten,
+        handlungskostensatz,
+        gewinnzuschlag
+        );
+
+    
     return 0;
 }
