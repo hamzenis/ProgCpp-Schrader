@@ -1,22 +1,22 @@
 /*
  * File: CH151.cpp
- * Project: Einführung in C - Schrader
+ * Project: Objektorientierte Progammierung in C++ - Schrader
  * Created Date: 2022-04-25, 10:29:07 am
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-04-25, 10:36:58 am
+ * Last Modified: 2022-05-16, 8:16:57 pm
  * Modified By: Hamzenis Kryeziu
  * -----
- * Copyright (c) 2022
- *
+ * Copyright (c) 2022 
+ * 
  * Free for use
  * -----
  * HISTORY:
  * Date              		By		Comments
  * ------------------		----	----------------------------------------------------------
  * 2022-04-25, 10:29:07 am	H.K.	-start-
-*/
+ */
 
 #include <iostream>
 
