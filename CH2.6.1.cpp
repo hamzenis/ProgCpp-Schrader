@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-17, 1:14:05 am
+ * Last Modified: 2022-05-18, 2:24:02 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -23,18 +23,18 @@
 using namespace std;
 
 void printTable(float l, int r, int s, float b, int h, int g) {
-    cout << l
-        << endl
-        << r
-        << endl
-        << s
-        << endl
-        << b
-        << endl
-        << h
-        << endl
-        << g
-        << endl;
+    cout    << "Listeneinkaufspreis: " << l
+            << endl
+            << "Rabatt (in %)!: " << r
+            << endl
+            << "Skonto(in %): " << s
+            << endl
+            << "Bezugskosten: " << b
+            << endl
+            << "Handlungskostensatz (in %): " << h
+            << endl
+            << "Gewinnzuschlag (in %): " << g
+            << endl;
 }
 /*
 *   CSI[2J clears screen, CSI[H moves the cursor to top-left corner
