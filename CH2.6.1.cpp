@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-19, 1:22:51 am
+ * Last Modified: 2022-05-19, 1:24:27 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -38,6 +38,7 @@ void printTable(float l, int r, int s, float b, int h, int g) {
             << "Gewinnzuschlag (in %): " << g
             << endl;
 }
+
 /*
 *   CSI[2J clears screen, CSI[H moves the cursor to top-left corner
 *   -
@@ -46,7 +47,6 @@ void printTable(float l, int r, int s, float b, int h, int g) {
 void clear() {
     std::cout << "\x1B[2J\x1B[H";
 }
-
 
 int main() {
 
@@ -76,7 +76,6 @@ int main() {
     cout << "Gewinnzuschlag (in %): ";
     cin >> gewinnzuschlag;
 
-
     cout << "Hit Enter." << endl;
     std::cin.ignore();
     std::cin.ignore();
@@ -90,6 +89,5 @@ int main() {
         gewinnzuschlag
         );
 
-    
     return 0;
 }
