@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-24, 1:01:24 am
+ * Last Modified: 2022-05-24, 1:38:19 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022 
@@ -18,16 +18,16 @@
  * 2022-05-23, 10:15:39 am	H.K.	-start-
  */
 
-#pragma once
+//#pragma once
 
-#ifndef STUDENT_H
-#define STUDENT_H
+// #ifndef STUDENT_H
+// #define STUDENT_H
 
-typedef struct{
+struct Birthday{
     int year;
     int month;
     int day;
-}Birthday;
+};
 
 class Student {
 
@@ -69,4 +69,4 @@ public:
     void printObject();
 };
 
-#endif
+// #endif

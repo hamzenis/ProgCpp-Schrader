@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-24, 1:07:25 am
+ * Last Modified: 2022-05-24, 1:40:42 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -22,7 +22,7 @@
 #include <iostream>
 #include <iomanip>
 
- //  Constructor
+//  Constructor
 Student::Student(int id,
                 std::string lname,
                 std::string fname,
