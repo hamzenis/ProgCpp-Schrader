@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-24, 1:40:02 am
+ * Last Modified: 2022-05-30, 10:05:15 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -20,7 +20,7 @@
 
 #include <iostream>
 #include <string>
-#include "Student.h"
+#include "Student.cpp"
 
 using namespace std;
 
@@ -29,6 +29,8 @@ int main() {
     Student neu(1234, "Kryeziu", "Hamzenis", "Informatik", 28, 10, 1998);
 
     neu.printObject();
+
+    cout << neu.getShortName() << endl;
 
     return 0;
 }
