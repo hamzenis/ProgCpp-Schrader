@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-30, 11:22:27 am
+ * Last Modified: 2022-05-30, 1:53:34 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -27,7 +27,7 @@ Vorlesung::Vorlesung(int id,
     std::string dozent,
     int ect,
     int sws) {
-
+    this->id = id;
     this->name = name;
     this->dozent = dozent;
     this->ect = ect;

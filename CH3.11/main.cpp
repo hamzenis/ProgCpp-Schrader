@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-30, 11:26:59 am
+ * Last Modified: 2022-05-30, 2:38:04 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -19,10 +19,11 @@
  */
 
 #include <iostream>
-#include <Vorlesung.cpp>
+#include "Vorlesung.cpp"
 
 int main() {
-    
+    Vorlesung neu(123, "CPP", "Schrader", 5, 4);
+    neu.printObject();
     return 0;
 }
 
