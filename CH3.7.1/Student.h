@@ -5,7 +5,9 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
+
  * Last Modified: 2022-05-30, 10:28:24 am
+
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022 
@@ -18,10 +20,13 @@
  * 2022-05-23, 10:15:39 am	H.K.	-start-
  */
 
+
 #pragma once
 
 #ifndef STUDENT_H
 #define STUDENT_H
+
+
 
 struct Birthday{
     int year;
@@ -68,4 +73,6 @@ public:
     std::string getShortName();
     void printObject();
 };
+
 #endif
+

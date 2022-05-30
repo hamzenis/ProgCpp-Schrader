@@ -5,7 +5,9 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
+
  * Last Modified: 2022-05-30, 11:00:24 pm
+
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -25,6 +27,7 @@
 using namespace std;
 
 int main() {
+
 
     Student neu(1234, "Kryeziu", "Hamzenis", "Informatik", 12, 12, 2000);
 
