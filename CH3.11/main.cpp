@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-30, 10:59:44 pm
+ * Last Modified: 2022-05-31, 9:12:00 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -27,7 +27,7 @@
 */
 void printVector(std::vector<Vorlesung> a) {
     std::cout << std::endl;
-    for (int i = 0; i < a.capacity(); i++) {
+    for (int i = 0; i < a.size(); i++) {
         a[i].printObject();
     }
 }
