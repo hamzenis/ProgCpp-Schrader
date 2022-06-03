@@ -8,6 +8,9 @@
  Studentenlizens hier beantragen: https://astah.net/astah-users/students/ <br>
  
  Zum Compilieren einer main mit eingebunden Klassen:<br>
-    ```
+ 
+
+    
     g++ *.cpp -o a.out
-    ```
+    
+    
