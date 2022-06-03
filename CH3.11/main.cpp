@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-31, 9:12:00 pm
+ * Last Modified: 2022-06-03, 1:19:03 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -19,7 +19,7 @@
  */
 
 #include <iostream>
-#include "Vorlesung.cpp"
+#include "Vorlesung.h"
 #include <vector>
 
 /*
