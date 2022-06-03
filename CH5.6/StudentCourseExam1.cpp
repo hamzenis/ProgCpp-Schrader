@@ -29,6 +29,15 @@ string convertToGrade(float inGrade){
     if(inGrade >= 5.9 &&  inGrade <= 6)  outGrade = "6";
     return outGrade;
 }
+//  the last print
+void printEnd(float GPA, string studentShortName){
+        cout    << "The GPA for " 
+            << studentShortName
+            << " is " 
+            << convertToGrade(GPA) 
+            << " Decimal: " 
+            << setprecision(3) << GPA << endl;
+}
 
 //  initialize vectors
 vector<Student> students = { Student(1,"George", "Burdell"),
@@ -95,7 +104,7 @@ int main() {
         }
     GPA = points / credits;
 
+    printEnd(GPA, studentShortName);
 
-    cout << "The GPA for " << studentShortName << " is " << convertToGrade(GPA) << " Decimal: " << setprecision(3) << GPA << endl;
     return (0);
 }
