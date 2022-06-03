@@ -38,10 +38,10 @@ private:
 	char grade;
 
 public:
-	Grade(int sid, int cid, char grd);
+	Grade(int sid, int cid, float grd);
 	int getStudentID();
 	int getCourseID();
-	char getGrade();
+	float getGrade();
 };
 
 #endif

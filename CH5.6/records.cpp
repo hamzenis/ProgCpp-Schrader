@@ -34,7 +34,7 @@ int Course::getCredits() {
 }
 
 
-Grade::Grade(int sid, int cid, char grd) {
+Grade::Grade(int sid, int cid, float grd) {
 	student_id = sid;
 	course_id = cid;
 	grade = grd;
@@ -45,7 +45,7 @@ int Grade::getStudentID() {
 int Grade::getCourseID() {
 	return course_id;
 }
-char Grade::getGrade() {
+float Grade::getGrade() {
 	return grade;
 }
 
