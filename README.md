@@ -6,6 +6,6 @@
  Astah UML wurde verwendet für die .asta Dateien
  
  Zum Compilieren einer main mit eingebunden Klassen:
-    ```
+    ```bash
     g++ *.cpp -o a.out
     ```
