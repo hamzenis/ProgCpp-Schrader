@@ -6,7 +6,7 @@
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
 
- * Last Modified: 2022-05-30, 11:00:24 pm
+ * Last Modified: 2022-06-03, 2:32:26 am
 
  * Modified By: Hamzenis Kryeziu
  * -----
@@ -22,7 +22,7 @@
 
 #include <iostream>
 #include <string>
-#include "Student.cpp"
+#include "Student.h"
 
 using namespace std;
 

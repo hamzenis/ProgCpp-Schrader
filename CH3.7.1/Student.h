@@ -6,7 +6,7 @@
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
 
- * Last Modified: 2022-05-30, 10:28:24 am
+ * Last Modified: 2022-06-03, 2:32:39 am
 
  * Modified By: Hamzenis Kryeziu
  * -----
@@ -26,7 +26,8 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-
+#include <iostream>
+#include <iomanip>
 
 struct Birthday{
     int year;

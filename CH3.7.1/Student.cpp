@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-24, 1:40:42 am
+ * Last Modified: 2022-06-03, 2:32:46 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -19,8 +19,7 @@
  */
 
 #include "Student.h"
-#include <iostream>
-#include <iomanip>
+
 
 //  Constructor
 Student::Student(int id,

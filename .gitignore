@@ -35,3 +35,6 @@
 .DS_Store
 *.json
 *.x
+
+build/
+CMakeLists.txt

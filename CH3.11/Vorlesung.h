@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-05-30, 11:17:15 am
+ * Last Modified: 2022-06-03, 1:21:17 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -22,6 +22,8 @@
 
 #ifndef VORLESUNG_H
 #define VORLESUNG_H
+
+#include <iostream>
 
 class Vorlesung {
 
