@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-15, 12:23:22 am
+ * Last Modified: 2022-06-15, 1:57:34 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -38,14 +38,14 @@ public:
     vector<Student> getVecStudent();
     vector<Course> getVecCourse();
     vector<Grade> getVecGrade();
-    string getCoursesName(int j);
-    int getCoursesCredit(int j);
-    string getStudentsName(int j);
-    string getStudentsShortName(int j);
+    string getCoursesName(int i);
+    int getCoursesCredit(int i);
+    string getStudentsName(int i);
+    string getStudentsShortName(int i);
     int getStudentsSize();
-    int getStudentsID(int j);
+    int getStudentsID(int i);
     int getCoursesSize();
-    int getCoursesID(int j);
+    int getCoursesID(int i);
 };
 
 StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades) {
@@ -62,35 +62,33 @@ vector<Course> StudentRecords::getVecCourse(){
 vector<Grade> StudentRecords::getVecGrade(){
     return grades;
 }
-string StudentRecords::getCoursesName(int j){
-    return courses[j].getName();
+string StudentRecords::getCoursesName(int i){
+    return courses[i].getName();
 }
-int StudentRecords::getCoursesCredit(int j){
-    return courses[j].getCredits();
+int StudentRecords::getCoursesCredit(int i){
+    return courses[i].getCredits();
 }
-string StudentRecords::getStudentsName(int j){
-    return students[j].getName();
+string StudentRecords::getStudentsName(int i){
+    return students[i].getName();
 }
-string StudentRecords::getStudentsShortName(int j){
-    return students[j].getShortName();
+string StudentRecords::getStudentsShortName(int i){
+    return students[i].getShortName();
 }
 int StudentRecords::getStudentsSize(){
     return students.size();
 }
-int StudentRecords::getStudentsID(int j){
-    return students[j].getID();
+int StudentRecords::getStudentsID(int i){
+    return students[i].getID();
 }
 int StudentRecords::getCoursesSize(){
     return courses.size();
 }
-int StudentRecords::getCoursesID(int j){
-    return courses[j].getID();
+int StudentRecords::getCoursesID(int i){
+    return courses[i].getID();
 }
 //  End Classes
 
-
-//  global variables
-float GPA = 0.0f;
+//  Functions
 
 //  converts the grades to strings in german grade notation
 string convertToGrade(float inGrade) {
@@ -114,9 +112,9 @@ string convertToGrade(float inGrade) {
     return outGrade;
 }
 //  the last print
-void printEnd(int j, StudentRecords stdR) {
+void printEnd(int i, StudentRecords stdR, float GPA) {
     cout << "The GPA for "
-        << stdR.getStudentsShortName(j)
+        << stdR.getStudentsShortName(i)
         << " is "
         << convertToGrade(GPA)
         << " Decimal: "
@@ -124,21 +122,21 @@ void printEnd(int j, StudentRecords stdR) {
 }
 
 //  prints the individual grades
-void printIndividual(int j, Grade grd, StudentRecords stdR) {
-    cout << stdR.getStudentsShortName(j) << ": "
-        << stdR.getCoursesName(j) << " - "
-        << stdR.getCoursesCredit(j) << " - "
+void printIndividual(int index, int i, Grade grd, StudentRecords stdR) {
+    cout << stdR.getStudentsShortName(index) << ": "
+        << stdR.getCoursesName(i) << " - "
+        << stdR.getCoursesCredit(i) << " - "
         << grd.getGrade() << " - "
         << convertToGrade(grd.getGrade()) << endl;
 }
 
 //  calculate and print the GPA
-float calcprint(int id, StudentRecords stdR, int j) {
+float calcprint(int id, StudentRecords stdR, int i) {
     float ergebnis = 0.0f;
     float points = 0.0f;
     float credits = 0.0f;
 
-    cout << "Results for: " << stdR.getStudentsName(j) << endl;
+    cout << "Results for: " << stdR.getStudentsName(i) << endl;
     for (Grade& grd : stdR.getVecGrade())
         if (grd.getStudentID() == id) {
             //  calculate total credits and points
@@ -147,8 +145,7 @@ float calcprint(int id, StudentRecords stdR, int j) {
                 j++;
             credits += stdR.getCoursesCredit(j);
             points += grd.getGrade() * stdR.getCoursesCredit(j);
-
-            printIndividual(j, grd, stdR);
+            printIndividual(i ,j, grd, stdR);
         };
     ergebnis = points / credits;
 
@@ -182,6 +179,9 @@ void notFoundCheck(int i, StudentRecords stdR) {
 int main() {
     string studentName;
     string studentShortName;
+    int id, i;
+    float GPA = 0.0f;
+    
     //  initialize vectors
     vector<Student> students = { Student(1,"George", "Burdell"),
                                 Student(2,"Nancy", "Rhodes") };
@@ -200,15 +200,12 @@ int main() {
     //  Objects
     StudentRecords example(students, courses, grades);
 
-    int id = selectStudent();
-    int i = findStudent(example, id);
+    id = selectStudent();
+    i = findStudent(example, id);
     notFoundCheck(i, example);
 
-    //studentName = example.getStudentsName(i);   //student[i].getName();
-    //studentShortName = example.getStudentsShortName(i); //students[i].getShortName()
-
     GPA = calcprint(id, example, i);
-    printEnd(i, example);
+    printEnd(i, example, GPA);
 
     return (0);
 }
