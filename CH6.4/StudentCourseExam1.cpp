@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-19, 1:35:37 am
+ * Last Modified: 2022-06-19, 1:55:17 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -27,7 +27,7 @@
 
 using namespace std;
 
-//  Start Classes
+/*----------start classes---------*/
 class StudentRecords {
 
 private:
@@ -156,7 +156,6 @@ void StudentRecords::printStudents() {
 }
 //  prints the student record of a student only with the ID
 void StudentRecords::printStudentRecord(int id) {
-    //  finden des Studenten
     int iStudent = 0, iCourse = 0;
     while (iStudent < students.size() && students[iStudent].getID() != id)
         iStudent++;
@@ -215,7 +214,7 @@ string StudentRecords::convertToGrade(float inGrade) {
     if (inGrade >= 5.9 && inGrade <= 6)  outGrade = "6";
     return outGrade;
 }
-//  End Classes
+/*----------end classes---------*/
 
 /*----------Functions----------*/
 
@@ -243,32 +242,12 @@ void notFoundCheck(int i, StudentRecords& stdR) {
     }
 }
 
-//  menue system to navigate the different options
-int startMenue() {
-    int imenue = 0;
-    cout << "Waehle einen der folgenden Punkte aus: " << endl
-        << "Student Record of a student(1)" << endl
-        << "Add data(2)" << endl
-        << "Print(3)" << endl
-        << "Ihre Eingabe: ";
-    cin >> imenue;
-    return imenue;
-}
-int secMenue() {
-    int imenue = 0;
-    cout << "Welche Daten: "
-        << "Student(1)\tCourse(2)\tGrade(3)"
-        << endl << "Ihre Eingabe: ";
-    cin >> imenue;
-    return imenue;
-}
-
 /*----------main--------*/
-
 int main() {
+
     int id, i, auswahl1, auswahl2;
 
-    //  Objects
+    //  objects
     StudentRecords example;
 
     //  data
@@ -298,36 +277,12 @@ int main() {
     i = findStudent(example, id);
     notFoundCheck(i, example);
 
-    //  menue system
-    auswahl1 = startMenue();
-    //  menue logic
-    switch (auswahl1) {
-        case 1:
-            example.printStudentRecord(id);
-            break;
-        case 2:
-            auswahl2 = secMenue();
-            switch (auswahl2) {
-                case 1:
-                    break;
-                default:
-                    cout << "invalid option" << endl;
-                    exit(1);
-            }
-            break;
-        case 3:
-            switch (auswahl2) {
-                case 1:
-                    break;
-                default:
-                    cout << "invalid option" << endl;
-                    exit(1);
-            }
-            break;
-        default:
-            cout << "invalid option" << endl;
-            exit(1);
-    }
+    // Tests
+    example.printStudentRecord(id);
+    example.printCourses();
+    example.printGrades();
+    example.printStudents();
+
     cout << "end of programm" << endl;
     return (0);
 }
