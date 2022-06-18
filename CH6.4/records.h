@@ -35,7 +35,7 @@ class Grade {
 private:
 	int student_id;
 	int course_id;
-	char grade;
+	float grade;
 
 public:
 	Grade(int sid, int cid, float grd);

@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-18, 5:36:30 pm
+ * Last Modified: 2022-06-18, 7:04:21 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -49,6 +49,9 @@ public:
     int getStudentsID(int i);
     int getCoursesSize();
     int getCoursesID(int i);
+    void pushStudent(int id, string firstname, string lastname);
+    void pushGrade(int studentid, int  courseid, float grade);
+    void pushCourse(int id, string name, unsigned char credits);
 };
 
 StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades) {
@@ -56,40 +59,52 @@ StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses,
     this->courses = courses;
     this->grades = grades;
 }
-StudentRecords::StudentRecords(){
+StudentRecords::StudentRecords() {
 }
-vector<Student> StudentRecords::getVecStudent(){
+vector<Student> StudentRecords::getVecStudent() {
     return students;
 }
-vector<Course> StudentRecords::getVecCourse(){
+vector<Course> StudentRecords::getVecCourse() {
     return courses;
 }
-vector<Grade> StudentRecords::getVecGrade(){
+vector<Grade> StudentRecords::getVecGrade() {
     return grades;
 }
-string StudentRecords::getCoursesName(int i){
+string StudentRecords::getCoursesName(int i) {
     return courses[i].getName();
 }
-int StudentRecords::getCoursesCredit(int i){
+int StudentRecords::getCoursesCredit(int i) {
     return courses[i].getCredits();
 }
-string StudentRecords::getStudentsName(int i){
+string StudentRecords::getStudentsName(int i) {
     return students[i].getName();
 }
-string StudentRecords::getStudentsShortName(int i){
+string StudentRecords::getStudentsShortName(int i) {
     return students[i].getShortName();
 }
-int StudentRecords::getStudentsSize(){
+int StudentRecords::getStudentsSize() {
     return students.size();
 }
-int StudentRecords::getStudentsID(int i){
+int StudentRecords::getStudentsID(int i) {
     return students[i].getID();
 }
-int StudentRecords::getCoursesSize(){
+int StudentRecords::getCoursesSize() {
     return courses.size();
 }
-int StudentRecords::getCoursesID(int i){
+int StudentRecords::getCoursesID(int i) {
     return courses[i].getID();
+}
+void StudentRecords::pushStudent(int id, string firstname, string lastname){
+    Student a(id,firstname,lastname);
+    students.push_back(a);
+}
+void StudentRecords::pushGrade(int studentid, int  courseid, float grd){
+    Grade a(studentid, courseid, grd);
+    grades.push_back(a);
+}
+void StudentRecords::pushCourse(int id, string name, unsigned char credits){
+    Course a(id, name, credits);
+    courses.push_back(a);
 }
 //  End Classes
 
@@ -118,7 +133,7 @@ string convertToGrade(float inGrade) {
 }
 
 //  the last print
-void printEnd(int i, StudentRecords stdR, float GPA) {
+void printEnd(int i, StudentRecords& stdR, float GPA) {
     cout << "The GPA for "
         << stdR.getStudentsShortName(i)
         << " is "
@@ -128,7 +143,7 @@ void printEnd(int i, StudentRecords stdR, float GPA) {
 }
 
 //  prints the individual grades
-void printIndividual(int index, int i, Grade grd, StudentRecords stdR) {
+void printIndividual(int index, int& i, Grade& grd, StudentRecords& stdR) {
     cout << stdR.getStudentsShortName(index) << ": "
         << stdR.getCoursesName(i) << " - "
         << stdR.getCoursesCredit(i) << " - "
@@ -137,7 +152,7 @@ void printIndividual(int index, int i, Grade grd, StudentRecords stdR) {
 }
 
 //  calculate and print the GPA
-float calcprint(int id, StudentRecords stdR, int i) {
+float calcprint(int id, StudentRecords& stdR, int& i) {
     float ergebnis = 0.0f;
     float points = 0.0f;
     float credits = 0.0f;
@@ -151,7 +166,7 @@ float calcprint(int id, StudentRecords stdR, int i) {
                 j++;
             credits += stdR.getCoursesCredit(j);
             points += grd.getGrade() * stdR.getCoursesCredit(j);
-            printIndividual(i ,j, grd, stdR);
+            printIndividual(i, j, grd, stdR);
         };
     ergebnis = points / credits;
 
@@ -159,7 +174,7 @@ float calcprint(int id, StudentRecords stdR, int i) {
 }
 
 //  find name of student
-int findStudent(StudentRecords stdR, int id) {
+int findStudent(StudentRecords& stdR, int id) {
     int i = 0;
     while (i < stdR.getStudentsSize() && stdR.getStudentsID(i) != id)
         i++;
@@ -175,7 +190,7 @@ int selectStudent() {
 }
 
 //  checks if student exists
-void notFoundCheck(int i, StudentRecords stdR) {
+void notFoundCheck(int i, StudentRecords& stdR) {
     if (i == stdR.getStudentsSize()) {
         cout << "Student not found!" << endl;
         exit(1);
@@ -187,7 +202,7 @@ int main() {
     string studentShortName;
     int id, i;
     float GPA = 0.0f;
-    
+
     //  initialize vectors
     vector<Student> students = { Student(1,"George", "Burdell"),
                                 Student(2,"Nancy", "Rhodes") };
@@ -207,6 +222,14 @@ int main() {
     //  Objects
     StudentRecords example(students, courses, grades);
 
+    //  Methoden Test mit neuen Objekten
+    example.pushStudent(4,"Hamzenis","Kryeziu");
+    example.pushGrade(4,1,1.3);
+    example.pushGrade(4,2,1.5);
+    example.pushGrade(4,4,3.0);
+    example.pushGrade(4,3,2.3);
+
+    //  Ausführung
     id = selectStudent();
     i = findStudent(example, id);
     notFoundCheck(i, example);
