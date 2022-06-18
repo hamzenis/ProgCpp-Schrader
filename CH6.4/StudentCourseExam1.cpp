@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-18, 10:56:41 pm
+ * Last Modified: 2022-06-19, 12:17:12 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -58,6 +58,8 @@ public:
     void printGrades();
     void printStudents();
     void printStudentRecord(int id);
+    float calcGPA(int id);
+    string convertToGrade(float inGrade);
 };
 
 StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades) {
@@ -140,19 +142,62 @@ void StudentRecords::printStudents() {
 }
 void StudentRecords::printStudentRecord(int id) {
     //  finden des Studenten
-    int iStudent = 0;
+    int iStudent = 0, iCourse = 0;
     while (iStudent < students.size() && students[iStudent].getID() != id)
         iStudent++;
+        
     cout << students[iStudent].getName() + ": " << endl;
     for (Grade& grd : grades) {
         if (id == grd.getStudentID()) {
-            cout << "Course: "
-                << grd.getCourseID() 
-                << " Note: " << grd.getGrade() << " ("
-                << setprecision(3) << grd.getGrade() << ")" << endl; 
+            iCourse = 0;
+            while (iCourse < courses.size() && courses[iCourse].getID() != grd.getCourseID())
+                iCourse++;
+            cout << "Course ID: "
+                << grd.getCourseID()
+                << " Course name: "
+                << courses[iCourse].getName()
+                << " Note: " << convertToGrade(grd.getGrade()) << " ("
+                << setprecision(3) << grd.getGrade() << ")" << endl;
+        }
+    }
+    cout << "GPA: " << calcGPA(id) << endl;
+}
+float StudentRecords::calcGPA(int id) {
+    float courseCredits = 0.0f, sumGrades = 0.0f;
+    int iCourse, iGrade;
+
+    for (Grade& grd : grades) {
+        if (id == grd.getStudentID()) {
+            iCourse = 0;
+            while (iCourse < courses.size() && courses[iCourse].getID() != grd.getCourseID())
+                iCourse++;
+            courseCredits += courses[iCourse].getCredits();
+            sumGrades += courses[iCourse].getCredits() * grd.getGrade();
         }
     }
 
+    return sumGrades / courseCredits;
+}
+//  converts the grades to strings in german grade notation
+string StudentRecords::convertToGrade(float inGrade) {
+    string outGrade;
+    if (inGrade >= 1 && inGrade < 1.2)   outGrade = "1+";
+    if (inGrade >= 1.2 && inGrade < 1.6) outGrade = "1";
+    if (inGrade >= 1.6 && inGrade < 1.9) outGrade = "1-";
+    if (inGrade >= 1.9 && inGrade < 2.2) outGrade = "2+";
+    if (inGrade >= 2.2 && inGrade < 2.6) outGrade = "2";
+    if (inGrade >= 2.6 && inGrade < 2.9) outGrade = "2-";
+    if (inGrade >= 2.9 && inGrade < 3.2) outGrade = "3+";
+    if (inGrade >= 3.2 && inGrade < 3.6) outGrade = "3";
+    if (inGrade >= 3.6 && inGrade < 3.9) outGrade = "3-";
+    if (inGrade >= 3.9 && inGrade < 4.2) outGrade = "4+";
+    if (inGrade >= 4.2 && inGrade < 4.6) outGrade = "4";
+    if (inGrade >= 4.6 && inGrade < 4.9) outGrade = "4-";
+    if (inGrade >= 4.9 && inGrade < 5.2) outGrade = "5+";
+    if (inGrade >= 5.2 && inGrade < 5.6) outGrade = "5";
+    if (inGrade >= 5.6 && inGrade < 5.9) outGrade = "5-";
+    if (inGrade >= 5.9 && inGrade <= 6)  outGrade = "6";
+    return outGrade;
 }
 //  End Classes
 
@@ -291,7 +336,6 @@ int main() {
     example.printGrades();
 
     example.printStudentRecord(id);
-
 
     return (0);
 }
