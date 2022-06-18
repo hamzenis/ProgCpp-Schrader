@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-18, 7:20:56 pm
+ * Last Modified: 2022-06-18, 10:56:41 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -39,6 +39,7 @@ public:
     StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades);
     //  Default constructor
     StudentRecords();
+
     vector<Student> getVecStudent();
     vector<Course> getVecCourse();
     vector<Grade> getVecGrade();
@@ -56,6 +57,7 @@ public:
     void printCourses();
     void printGrades();
     void printStudents();
+    void printStudentRecord(int id);
 };
 
 StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades) {
@@ -130,11 +132,27 @@ void StudentRecords::printGrades() {
     }
 }
 void StudentRecords::printStudents() {
-    for(Student& stdt : students){
+    for (Student& stdt : students) {
         cout << stdt.getID()
             << " " + stdt.getName()
             << endl;
     }
+}
+void StudentRecords::printStudentRecord(int id) {
+    //  finden des Studenten
+    int iStudent = 0;
+    while (iStudent < students.size() && students[iStudent].getID() != id)
+        iStudent++;
+    cout << students[iStudent].getName() + ": " << endl;
+    for (Grade& grd : grades) {
+        if (id == grd.getStudentID()) {
+            cout << "Course: "
+                << grd.getCourseID() 
+                << " Note: " << grd.getGrade() << " ("
+                << setprecision(3) << grd.getGrade() << ")" << endl; 
+        }
+    }
+
 }
 //  End Classes
 
@@ -271,6 +289,8 @@ int main() {
     example.printStudents();
     example.printCourses();
     example.printGrades();
+
+    example.printStudentRecord(id);
 
 
     return (0);
