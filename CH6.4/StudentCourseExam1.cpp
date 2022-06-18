@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-15, 1:57:34 am
+ * Last Modified: 2022-06-18, 5:36:30 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -34,7 +34,10 @@ private:
     vector<Grade> grades;
 
 public:
+    //  Parameterized constructor 
     StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades);
+    //  Default constructor
+    StudentRecords();
     vector<Student> getVecStudent();
     vector<Course> getVecCourse();
     vector<Grade> getVecGrade();
@@ -52,6 +55,8 @@ StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses,
     this->students = students;
     this->courses = courses;
     this->grades = grades;
+}
+StudentRecords::StudentRecords(){
 }
 vector<Student> StudentRecords::getVecStudent(){
     return students;
@@ -88,7 +93,7 @@ int StudentRecords::getCoursesID(int i){
 }
 //  End Classes
 
-//  Functions
+/*----------Functions----------*/
 
 //  converts the grades to strings in german grade notation
 string convertToGrade(float inGrade) {
@@ -111,6 +116,7 @@ string convertToGrade(float inGrade) {
     if (inGrade >= 5.9 && inGrade <= 6)  outGrade = "6";
     return outGrade;
 }
+
 //  the last print
 void printEnd(int i, StudentRecords stdR, float GPA) {
     cout << "The GPA for "
@@ -197,6 +203,7 @@ int main() {
                             Grade(2,1,1),
                             Grade(2,2,2),
                             Grade(2,4,2) };
+
     //  Objects
     StudentRecords example(students, courses, grades);
 
