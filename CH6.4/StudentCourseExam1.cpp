@@ -1,11 +1,11 @@
 /*
  * File: StudentCourseExam1.cpp
  * Project: Objektorientierte Progammierung in C++ - Schrader
- * Created Date: 2022-06-03, 12:13:19 am
+ * Created Date: 2022-06-18, 6:10:20 pm
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-19, 12:31:13 am
+ * Last Modified: 2022-06-19, 1:35:37 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -15,8 +15,9 @@
  * HISTORY:
  * Date              		By		Comments
  * ------------------		----	----------------------------------------------------------
+ * 2022-06-19, 12:46:42 am	H.K.	v2
  * 2022-06-18, 7:06:17 pm	H.K.	v1
- * 2022-06-03, 12:13:19 am	H.K.	-start-
+ * 2022-06-18, 6:10:20 pm	H.K.	-start-
  */
 
 #include <iostream>
@@ -242,52 +243,91 @@ void notFoundCheck(int i, StudentRecords& stdR) {
     }
 }
 
+//  menue system to navigate the different options
+int startMenue() {
+    int imenue = 0;
+    cout << "Waehle einen der folgenden Punkte aus: " << endl
+        << "Student Record of a student(1)" << endl
+        << "Add data(2)" << endl
+        << "Print(3)" << endl
+        << "Ihre Eingabe: ";
+    cin >> imenue;
+    return imenue;
+}
+int secMenue() {
+    int imenue = 0;
+    cout << "Welche Daten: "
+        << "Student(1)\tCourse(2)\tGrade(3)"
+        << endl << "Ihre Eingabe: ";
+    cin >> imenue;
+    return imenue;
+}
+
 /*----------main--------*/
 
 int main() {
-    string studentName;
-    string studentShortName;
-    int id, i;
-    float GPA = 0.0f;
-
-    //  initialize vectors
-    vector<Student> students = { Student(1,"George", "Burdell"),
-                                Student(2,"Nancy", "Rhodes") };
-
-    vector<Course> courses = { Course(1,"Algebra",5),
-                                Course(2,"Physics",4),
-                                Course(3,"English",3),
-                                Course(4,"Economics",4) };
-
-    vector<Grade> grades = { Grade(1,1,2),
-                            Grade(1,2,1),
-                            Grade(1,3,3),
-                            Grade(2,1,1),
-                            Grade(2,2,2),
-                            Grade(2,4,2) };
+    int id, i, auswahl1, auswahl2;
 
     //  Objects
-    StudentRecords example(students, courses, grades);
+    StudentRecords example;
 
-    //  Methoden Test mit neuen Objekten
+    //  data
     example.pushStudent(4, "Hamzenis", "Kryeziu");
+    example.pushStudent(1, "George", "Burdell");
+    example.pushStudent(2, "Nancy", "Rhodes");
+
+    example.pushCourse(1, "Algebra", 5);
+    example.pushCourse(2, "Physics", 4);
+    example.pushCourse(3, "English", 3);
+    example.pushCourse(4, "Economics", 4);
+
     example.pushGrade(4, 1, 1.3);
     example.pushGrade(4, 2, 1.5);
     example.pushGrade(4, 4, 3.0);
     example.pushGrade(4, 3, 2.3);
+    example.pushGrade(1, 1, 2);
+    example.pushGrade(1, 2, 1);
+    example.pushGrade(1, 3, 3);
+    example.pushGrade(2, 1, 1);
+    example.pushGrade(2, 2, 2);
+    example.pushGrade(2, 4, 2);
+
 
     //  Ausführung
     id = selectStudent();
     i = findStudent(example, id);
     notFoundCheck(i, example);
 
-
-    //  Print Test
-    example.printStudents();
-    example.printCourses();
-    example.printGrades();
-
-    example.printStudentRecord(id);
-
+    //  menue system
+    auswahl1 = startMenue();
+    //  menue logic
+    switch (auswahl1) {
+        case 1:
+            example.printStudentRecord(id);
+            break;
+        case 2:
+            auswahl2 = secMenue();
+            switch (auswahl2) {
+                case 1:
+                    break;
+                default:
+                    cout << "invalid option" << endl;
+                    exit(1);
+            }
+            break;
+        case 3:
+            switch (auswahl2) {
+                case 1:
+                    break;
+                default:
+                    cout << "invalid option" << endl;
+                    exit(1);
+            }
+            break;
+        default:
+            cout << "invalid option" << endl;
+            exit(1);
+    }
+    cout << "end of programm" << endl;
     return (0);
 }
