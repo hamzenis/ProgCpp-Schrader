@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-18, 7:04:21 pm
+ * Last Modified: 2022-06-18, 7:20:56 pm
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -15,6 +15,7 @@
  * HISTORY:
  * Date              		By		Comments
  * ------------------		----	----------------------------------------------------------
+ * 2022-06-18, 7:06:17 pm	H.K.	v1
  * 2022-06-03, 12:13:19 am	H.K.	-start-
  */
 
@@ -52,6 +53,9 @@ public:
     void pushStudent(int id, string firstname, string lastname);
     void pushGrade(int studentid, int  courseid, float grade);
     void pushCourse(int id, string name, unsigned char credits);
+    void printCourses();
+    void printGrades();
+    void printStudents();
 };
 
 StudentRecords::StudentRecords(vector<Student> students, vector<Course> courses, vector<Grade> grades) {
@@ -94,17 +98,43 @@ int StudentRecords::getCoursesSize() {
 int StudentRecords::getCoursesID(int i) {
     return courses[i].getID();
 }
-void StudentRecords::pushStudent(int id, string firstname, string lastname){
-    Student a(id,firstname,lastname);
+void StudentRecords::pushStudent(int id, string firstname, string lastname) {
+    Student a(id, firstname, lastname);
     students.push_back(a);
 }
-void StudentRecords::pushGrade(int studentid, int  courseid, float grd){
+void StudentRecords::pushGrade(int studentid, int  courseid, float grd) {
     Grade a(studentid, courseid, grd);
     grades.push_back(a);
 }
-void StudentRecords::pushCourse(int id, string name, unsigned char credits){
+void StudentRecords::pushCourse(int id, string name, unsigned char credits) {
     Course a(id, name, credits);
     courses.push_back(a);
+}
+void StudentRecords::printCourses() {
+    for (Course& crs : courses) {
+        cout << crs.getID()
+            << " " + crs.getName() + " Gewichtung: "
+            << crs.getCredits()
+            << endl;
+    }
+}
+void StudentRecords::printGrades() {
+    for (Grade& grd : grades) {
+        cout << "Course ID: "
+            << grd.getCourseID()
+            << " Studenten ID: "
+            << grd.getStudentID()
+            << " Note: "
+            << grd.getGrade()
+            << endl;
+    }
+}
+void StudentRecords::printStudents() {
+    for(Student& stdt : students){
+        cout << stdt.getID()
+            << " " + stdt.getName()
+            << endl;
+    }
 }
 //  End Classes
 
@@ -223,11 +253,11 @@ int main() {
     StudentRecords example(students, courses, grades);
 
     //  Methoden Test mit neuen Objekten
-    example.pushStudent(4,"Hamzenis","Kryeziu");
-    example.pushGrade(4,1,1.3);
-    example.pushGrade(4,2,1.5);
-    example.pushGrade(4,4,3.0);
-    example.pushGrade(4,3,2.3);
+    example.pushStudent(4, "Hamzenis", "Kryeziu");
+    example.pushGrade(4, 1, 1.3);
+    example.pushGrade(4, 2, 1.5);
+    example.pushGrade(4, 4, 3.0);
+    example.pushGrade(4, 3, 2.3);
 
     //  Ausführung
     id = selectStudent();
@@ -236,6 +266,12 @@ int main() {
 
     GPA = calcprint(id, example, i);
     printEnd(i, example, GPA);
+
+    //  Print Test
+    example.printStudents();
+    example.printCourses();
+    example.printGrades();
+
 
     return (0);
 }
