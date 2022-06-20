@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-20, 11:05:13 am
+ * Last Modified: 2022-06-20, 11:05:54 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -59,7 +59,6 @@ public:
     float calcGPA(int id);
     string convertToGrade(float inGrade);
     void initializeData(StudentRecords& a);
-    void convertToNumGrade(string strGrade);
 };
 
 /*------class functions------*/
