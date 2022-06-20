@@ -5,7 +5,7 @@
  * Author: Hamzenis Kryeziu
  * E-Mail: hamzenis.kryeziu@stud.fra-uas.de
  * -----
- * Last Modified: 2022-06-19, 1:55:17 am
+ * Last Modified: 2022-06-20, 11:05:13 am
  * Modified By: Hamzenis Kryeziu
  * -----
  * Copyright (c) 2022
@@ -58,6 +58,8 @@ public:
     void printStudentRecord(int id);
     float calcGPA(int id);
     string convertToGrade(float inGrade);
+    void initializeData(StudentRecords& a);
+    void convertToNumGrade(string strGrade);
 };
 
 /*------class functions------*/
@@ -214,6 +216,28 @@ string StudentRecords::convertToGrade(float inGrade) {
     if (inGrade >= 5.9 && inGrade <= 6)  outGrade = "6";
     return outGrade;
 }
+void StudentRecords::initializeData(StudentRecords& a) {
+    //  data
+    a.pushStudent(4, "Hamzenis", "Kryeziu");
+    a.pushStudent(1, "George", "Burdell");
+    a.pushStudent(2, "Nancy", "Rhodes");
+
+    a.pushCourse(1, "Algebra", 5);
+    a.pushCourse(2, "Physics", 4);
+    a.pushCourse(3, "English", 3);
+    a.pushCourse(4, "Economics", 4);
+
+    a.pushGrade(4, 1, 1.3);
+    a.pushGrade(4, 2, 1.5);
+    a.pushGrade(4, 4, 3.0);
+    a.pushGrade(4, 3, 2.3);
+    a.pushGrade(1, 1, 2);
+    a.pushGrade(1, 2, 1);
+    a.pushGrade(1, 3, 3);
+    a.pushGrade(2, 1, 1);
+    a.pushGrade(2, 2, 2);
+    a.pushGrade(2, 4, 2);
+}
 /*----------end classes---------*/
 
 /*----------Functions----------*/
@@ -251,26 +275,7 @@ int main() {
     StudentRecords example;
 
     //  data
-    example.pushStudent(4, "Hamzenis", "Kryeziu");
-    example.pushStudent(1, "George", "Burdell");
-    example.pushStudent(2, "Nancy", "Rhodes");
-
-    example.pushCourse(1, "Algebra", 5);
-    example.pushCourse(2, "Physics", 4);
-    example.pushCourse(3, "English", 3);
-    example.pushCourse(4, "Economics", 4);
-
-    example.pushGrade(4, 1, 1.3);
-    example.pushGrade(4, 2, 1.5);
-    example.pushGrade(4, 4, 3.0);
-    example.pushGrade(4, 3, 2.3);
-    example.pushGrade(1, 1, 2);
-    example.pushGrade(1, 2, 1);
-    example.pushGrade(1, 3, 3);
-    example.pushGrade(2, 1, 1);
-    example.pushGrade(2, 2, 2);
-    example.pushGrade(2, 4, 2);
-
+    example.initializeData(example);
 
     //  Ausführung
     id = selectStudent();
