@@ -7,7 +7,7 @@
 
 class Person {
 
-    private:
+    protected:
         std::string lname;
         std::string fname;
 
